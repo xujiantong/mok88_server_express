@@ -45,11 +45,8 @@ router.post("/register.json", (req, res)=>{
                         newUser.save()
                                .then(user => res.json(user))
                                .catch(err => console.log(err))
-                              
                     });
                 });
-
-
             }
         })
 });
@@ -112,6 +109,18 @@ router.get("/current.json",passport.authenticate("jwt",{session:false}),(req, re
         }
        }
     )
-})
+});
 
+/**
+ * @route GET api/users/list.json
+ * @desc return userList
+ * @access private
+ */
+//todo:: private
+router.get("/list.json",(req, res)=>{
+    User.find()
+        .then(user=>{
+            res.json(user)
+        })
+});
 module.exports = router;

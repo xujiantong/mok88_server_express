@@ -27,4 +27,5 @@ const UserSchema = new Schema({
     },
 });
 
+// 将 schema 编译成 model
 module.exports = User = mongoose.model("users", UserSchema);
